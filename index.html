@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter the SaltyVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(ellipse at center, #0A0B1F 0%, #01020C 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .wormhole {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200vw;
+      height: 200vh;
+      background: url('https://media.giphy.com/media/xTiTntpDIXFZ1azKHC/giphy.gif') center center / cover no-repeat;
+      opacity: 0.1;
+      animation: swirl 60s infinite linear;
+      z-index: 0;
+    }
+
+    @keyframes swirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .center-box {
+      position: relative;
+      z-index: 2;
+      width: 320px;
+      margin: 6vh auto 0 auto;
+      background: rgba(20, 20, 40, 0.95);
+      padding: 1.2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px #FF3CAC, 0 0 40px #42FFB9;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+    }
+
+    input, button {
+      width: 100%;
+      margin: 0.4rem 0;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    input {
+      background: #111;
+      color: #fff;
+    }
+
+    button {
+      background: #FF3CAC;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #42FFB9;
+    }
+
+    #location-info {
+      color: #FFD700;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      min-height: 1em;
+    }
+
+    .shaniqua-img {
+      width: 90px;
+      max-width: 100%;
+      display: block;
+      margin: 1.2rem auto 0.4rem auto;
+      border-radius: 10px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.15); }
+      100% { filter: brightness(1); }
+    }
+
+    #quote-box {
+      position: fixed;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.7rem 1.2rem;
+      font-size: 0.85rem;
+      color: #FFD700;
+      border-radius: 10px;
+      text-align: center;
+      animation: glitch 3s infinite;
+      z-index: 999;
+      max-width: 94%;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 0 0 2px #FF3CAC, 0 0 10px #42FFB9; }
+      50% { text-shadow: -1px 0 #FF3CAC, 2px 2px #42FFB9; transform: scale(1.05); }
+      100% { text-shadow: 0 0 2px #FFD700, 0 0 8px #FF3CAC; }
+    }
+
+    .test-msg {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: #79ffe1;
+    }
+
+    .return-link {
+      display: block;
+      text-align: center;
+      margin: 1rem auto 0 auto;
+      font-size: 0.8rem;
+      color: #42FFB9;
+      text-decoration: none;
+    }
+
+    .return-link:hover {
+      text-decoration: underline;
+      color: #FFD700;
+    }
+
+    #saltyverse-portal {
+      display: none;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    #saltyverse-portal h2 {
+      font-size: 1.3rem;
+      color: #79ffe1;
+      margin-bottom: 1rem;
+    }
+
+    #saltyverse-portal img {
+      max-width: 92%;
+      border-radius: 14px;
+      margin-top: 1rem;
+      box-shadow: 0 0 12px #42FFB9;
+    }
+  </style>
+</head>
+<body>
+  <div class="wormhole"></div>
+  <div id="quote-box">"Reality? Optional. Sass? Mandatory."</div>
+
+  <div class="center-box" id="login-box">
+    <h1>SaltyVerse Mega Login</h1>
+    <form onsubmit="initLogin(event)">
+      <input id="nickname" type="text" placeholder="Codename (Nickname)" value="salty@getabot.com" required />
+      <input id="password" type="password" placeholder="Enter Password" value="SALTYBOT" required />
+      <button type="submit">Log Me In</button>
+    </form>
+    <div class="test-msg">(Use <b>salty@getabot.com</b> and <b>SALTYBOT</b> to test the portal)</div>
+    <div id="location-info">🌐 Detecting location...</div>
+    <img class="shaniqua-img" src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=h:175,m" alt="Shaniqua Sees You">
+    <a href="https://tntcybersolutions.com" class="return-link">← Return to TNTCyberSolutions.com</a>
+  </div>
+
+  <div id="saltyverse-portal">
+    <h2>🔥 Welcome to the SaltyVerse</h2>
+    <p>You’ve breached the sass barrier. This is your command console.</p>
+    <img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/SaltyVerseGrouppng.png" alt="SaltyVerse Console">
+  </div>
+
+  <script>
+    const quotes = [
+      "Reality? Optional. Sass? Mandatory.",
+      "Girl, that password better not be '1234'.",
+      "Shaniqua sees you... and she's judging.",
+      "Login attempt? Try sass level upgrade first.",
+      "You can’t spell 'cybersecure' without SASS.",
+      "Your keyboard is trembling. She feels it."
+    ];
+
+    setInterval(() => {
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("quote-box").textContent = `"${quote}"`;
+    }, 8000);
+
+    async function initLogin(e) {
+      e.preventDefault();
+      const nickname = document.getElementById("nickname").value;
+      const pw = document.getElementById("password").value;
+
+      if (pw.length < 6) {
+        alert("Shaniqua says: Girl, you call that a password?");
+        return;
+      }
+
+      let shown = false;
+      setTimeout(() => {
+        if (!shown) document.getElementById("location-info").textContent = "❌ Location unavailable. You hiding, boo?";
+      }, 4000);
+
+      try {
+        const res = await fetch('https://ipinfo.io/json?token=1d47c37ea47ca6');
+        const data = await res.json();
+        shown = true;
+        document.getElementById("location-info").textContent = `👁️ Shaniqua sees you from ${data.city}, ${data.region}`;
+      } catch (err) {
+        if (!shown)
+          document.getElementById("location-info").textContent = "❌ Location unavailable. You hiding, boo?";
+      }
+
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("saltyverse-portal").style.display = "block";
+    }
+  </script>
+</body>
+</html>
