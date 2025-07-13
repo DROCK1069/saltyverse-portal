@@ -1,0 +1,64 @@
+:root {
+  --bg: #0a0b1f;
+  --accent: #42FFB9;
+  --highlight: #FF3CAC;
+  --font: 'Segoe UI', sans-serif;
+}
+body {
+  background: var(--bg);
+  color: white;
+  font-family: var(--font);
+  margin: 0;
+  padding: 0;
+}
+nav {
+  background: #10142b;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+main {
+  padding: 2rem;
+}
+.login-box {
+  background: #1a1d33;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 25px var(--highlight);
+  max-width: 400px;
+  margin: 5rem auto;
+  text-align: center;
+}
+input, button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 8px;
+}
+button {
+  background: var(--accent);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+#map {
+  height: 400px;
+  background: #222;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+.gear-item, .gear-slot {
+  background: #2b2f4a;
+  padding: 1rem;
+  border: 1px dashed white;
+  border-radius: 8px;
+  margin: 0.5rem;
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+}
