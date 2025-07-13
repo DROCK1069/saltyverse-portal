@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SaltyVerse – Mega Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(circle, #0A0B1F 0%, #01020C 100%);
+      font-family: 'Montserrat', sans-serif;
+      color: #e8faff;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: #FFD700;
+      margin-bottom: 1rem;
+    }
+    #location-info {
+      margin-top: 1.2rem;
+      font-size: 1.1rem;
+      color: #42FFB9;
+    }
+    .loader {
+      font-size: 1rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Welcome to the SaltyVerse Portal</h1>
+    <p class="loader">Initializing sass matrix...</p>
+    <div id="location-info">🌐 Detecting location...</div>
+  </div>
+
+  <script>
+    async function initLocation() {
+      const locationBox = document.getElementById('location-info');
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 3000);
+
+        const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+        clearTimeout(timeout);
+
+        if (!res.ok) throw new Error("Fetch failed");
+        const data = await res.json();
+
+        if (data.city && data.region) {
+          locationBox.textContent = `👁️ Shaniqua sees you from ${data.city}, ${data.region}`;
+        } else {
+          locationBox.textContent = "👁️ Shaniqua sees you... but you cloaked in mystery.";
+        }
+      } catch (err) {
+        locationBox.textContent = "👁️ Location unavailable – stealth mode detected.";
+      }
+    }
+
+    window.onload = () => {
+      initLocation();
+    };
+  </script>
+</body>
+</html>
