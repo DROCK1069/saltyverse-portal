@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enter the SaltyVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(ellipse at center, #0A0B1F 0%, #01020C 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .center-box {
+      position: relative;
+      z-index: 2;
+      max-width: 360px;
+      margin: 8vh auto;
+      background: rgba(20, 20, 40, 0.95);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 25px #FF3CAC, 0 0 50px #42FFB9;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px #FF3CAC;
+    }
+
+    input, button {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input {
+      background: #111;
+      color: #fff;
+    }
+
+    button {
+      background: #FF3CAC;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #42FFB9;
+    }
+
+    #location-info {
+      color: #FFD700;
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .quote {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.95rem;
+      color: #FFD700;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      animation: fadeQuote 12s infinite;
+      text-align: center;
+    }
+
+    @keyframes fadeQuote {
+      0% { opacity: 0; transform: translateY(0); }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+
+    .shaniqua-img {
+      width: 100%;
+      max-width: 180px;
+      border-radius: 10px;
+      margin-top: 1rem;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.15); }
+      100% { filter: brightness(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="center-box">
+    <h1>SaltyVerse Login</h1>
+    <form onsubmit="handleLogin(event)">
+      <input id="email" type="email" placeholder="Enter Email" value="salty@getabot.com" required />
+      <input id="password" type="password" placeholder="Enter Password" value="saltybot" required />
+      <button type="submit">Log Me In</button>
+    </form>
+    <div id="location-info">🌐 Detecting location...</div>
+    <img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=w:200,h:200,cg:true" alt="Shaniqua Sees You" class="shaniqua-img">
+  </div>
+  <div class="quote" id="quote-box">"Reality? Optional. Sass? Mandatory."</div>
+
+  <script>
+    const quotes = [
+      "Reality? Optional. Sass? Mandatory.",
+      "You call that a password? Shaniqua's unimpressed.",
+      "Shaniqua sees you... and she's judging.",
+      "Login attempt detected: Sass shields up.",
+      "You can’t spell ‘Salty’ without ‘AI’ and ‘🔥’.",
+      "Keyboard trembling? She feels it."
+    ];
+
+    setInterval(() => {
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("quote-box").textContent = `"${quote}"`;
+    }, 12000);
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      try {
+        const res = await fetch("https://ipinfo.io/json?token=1d47c37ea47ca6");
+        const data = await res.json();
+        document.getElementById("location-info").textContent =
+          `👁️ Shaniqua sees you from ${data.city}, ${data.region}`;
+      } catch {
+        document.getElementById("location-info").textContent =
+          "👁️ Location unavailable... you hiding, boo?";
+      }
+    }
+  </script>
+</body>
+</html>
