@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SaltyVerse Mega Login – Diva Mode</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000 url('https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif') center center / cover no-repeat;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .login-container {
+      z-index: 2;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .shaniqua-avatar {
+      width: 140px;
+      border-radius: 50%;
+      border: 3px solid #FF3CAC;
+      box-shadow: 0 0 15px #FF3CAC;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin: 0;
+      color: #FF3CAC;
+      text-shadow: 0 0 10px #FF3CAC, 0 0 30px #FF3CAC;
+    }
+    .login-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      margin-top: 2rem;
+      border-radius: 2rem;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      animation: pulseGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 10px #FF3CAC; }
+      to { box-shadow: 0 0 25px #FF3CAC, 0 0 40px #FF3CAC; }
+    }
+    input[type="text"], input[type="password"] {
+      padding: 0.75rem;
+      width: 250px;
+      border-radius: 1rem;
+      border: none;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .login-btn {
+      background: #FF3CAC;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .login-btn:hover {
+      background: #ff5db6;
+    }
+    .banter {
+      font-style: italic;
+      margin-top: 1rem;
+      color: #ccc;
+    }
+    .location-box {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #42FFB9;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="login-container">
+    <h1>Login to SaltyVerse</h1>
+    <div class="login-box">
+      <input type="text" placeholder="Username or Email" /><br />
+      <input type="password" placeholder="Password" /><br />
+      <button class="login-btn">Enter Diva Mode</button>
+      <div class="banter">“Password too weak? So is your hustle.” – Shaniqua</div>
+      <div class="location-box" id="geo-info">Locating you...</div>
+    </div>
+  </div>
+  <img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=w:300" class="shaniqua-avatar" alt="Shaniqua Avatar" />
+
+  <script>
+    fetch("https://ipinfo.io/json?token=1d47c37ea47ca6")
+      .then((response) => response.json())
+      .then((data) => {
+        const loc = `${data.city}, ${data.region} (${data.country})`;
+        document.getElementById("geo-info").textContent = `We see you in ${loc}... don’t embarrass your hometown.`;
+      })
+      .catch(() => {
+        document.getElementById("geo-info").textContent = "Location unknown… but Shaniqua's watching anyway.";
+      });
+  </script>
+</body>
+</html>
