@@ -1,0 +1,14 @@
+{
+  "admins": [
+    { "name": "Chad", "email": "Support@tntcyber.com" },
+    { "name": "Avery", "email": "Support@tntcyber.com" }
+  ],
+  "adminPassword": "Salty69!",
+  "memoryProvider": "supabase",
+  "backupLocations": [
+    "s3://saltyverse-backup-1/",
+    "gs://saltyverse-backup-2/",
+    "azure://saltyverse-backup-3/"
+  ],
+  "integrations": ["Pax8", "Microsoft365", "GitHub", "SharePoint", "Discord", "TikTok"]
+}
