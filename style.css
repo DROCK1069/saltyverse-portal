@@ -1,32 +1,57 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #0a0a23;
-    color: #fff;
+  margin: 0;
+  background-color: #0b0c2a;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
 }
-.container {
-    text-align: center;
-    padding-top: 20vh;
+h1 {
+  color: #ff3cac;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
-.enter-button {
-    background-color: #ff007a;
-    padding: 1em 2em;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
+p {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
-.dashboard {
-    padding: 2em;
+.avatar {
+  width: 200px;
+  border-radius: 50%;
+  border: 5px solid #ff3cac;
+  box-shadow: 0 0 25px #ff3cac;
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite ease-in-out;
 }
-button {
-    margin: 0.5em;
-    padding: 1em;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #ff3cac; }
+  50% { box-shadow: 0 0 25px #ff3cac, 0 0 50px #ff3cacaa; }
+  100% { box-shadow: 0 0 10px #ff3cac; }
 }
-button:hover {
-    background-color: #666;
+.location-sass {
+  font-size: 1.1rem;
+  color: #42ffb9;
+  margin-bottom: 2rem;
+}
+.btn-home {
+  padding: 12px 24px;
+  background: #ff3cac;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 10px #ff3cac;
+}
+.btn-home:hover {
+  background: #ff66b7;
 }
