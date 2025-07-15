@@ -2,28 +2,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Enter the SaltyVerse</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shaniqua’s SaltyVerse Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="auth.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Shaniqua’s SaltyVerse</h1>
-    <img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=w:300" class="avatar" alt="Shaniqua Avatar">
-    <p id="geo-info">Locating your fabulous self...</p>
-    <form id="login-form">
-      <input type="email" placeholder="Email" id="email" required>
-      <input type="password" placeholder="Password" id="password" required>
-      <button type="submit">Login</button>
-    </form>
-    <div id="social-login">
-      <button id="google-login">Login with Google</button>
-      <button id="microsoft-login">Login with Microsoft</button>
-      <button id="discord-login">Login with Discord</button>
-    </div>
-    <a class="btn-home" href="https://tntcybersolutions.com">← Return to TNTCyberSolutions</a>
+  <h1>Welcome to Shaniqua’s SaltyVerse</h1>
+  <p>Full login and sass mode incoming...</p>
+  <img class="avatar" src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=w:300" alt="Shaniqua Avatar">
+  <div class="location-sass" id="geo-info">Locating your fabulous self...</div>
+
+  <form id="login-form">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button type="submit">Enter</button>
+  </form>
+
+  <div id="social-login">
+    <button onclick="loginWithProvider('google')">Login with Google</button>
+    <button onclick="loginWithProvider('microsoft')">Login with Microsoft</button>
+    <button onclick="loginWithProvider('facebook')">Login with Facebook</button>
+    <button onclick="loginWithProvider('discord')">Login with Discord</button>
   </div>
-  <script src="auth.js"></script>
+
+  <a class="btn-home" href="https://tntcybersolutions.com">← Return to TNTCyberSolutions</a>
+
+  <script>
+    fetch("https://ipinfo.io/json?token=1d47c37ea47ca6")
+      .then(response => response.json())
+      .then(data => {
+        const city = data.city || "your town";
+        const region = data.region || "your state";
+        const sassLine = `Oh honey... logging in from ${city}, ${region}? Don’t embarrass your hometown.`;
+        document.getElementById("geo-info").textContent = sassLine;
+        const audio = new Audio(`https://saltiq.ai/api/shaniqua/tts?text=${encodeURIComponent(sassLine)}`);
+        setTimeout(() => audio.play(), 1200);
+      })
+      .catch(() => {
+        document.getElementById("geo-info").textContent = "Can’t even find your location… now that’s embarrassing.";
+      });
+  </script>
 </body>
 </html>
