@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaltyVerse AI Diva Mode</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at center, #0A0B1F, #0F0F2F);
+      background-image: url('https://media.giphy.com/media/xTiTntpDIXFZ1azKHC/giphy.gif');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: auto;
+      padding: 2rem 1rem;
+      margin: 5vh auto;
+      max-width: 820px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 18px;
+      box-shadow: 0 0 22px #42FFB9;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 14px #FF3CAC;
+    }
+    .toggles {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    label {
+      font-size: 0.95rem;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.3);
+    }
+    #chatbox {
+      background: rgba(10, 10, 25, 0.85);
+      padding: 1rem;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 720px;
+      height: 280px;
+      overflow-y: auto;
+      box-shadow: 0 0 22px #00FFC6;
+      border: 1px solid #42FFB9;
+      margin-bottom: 1.2rem;
+    }
+    #chatbox div {
+      margin: 0.5rem 0;
+    }
+    .user { text-align: right; color: #79FFE1; }
+    .bot { text-align: left; color: #FFD700; font-style: italic; }
+    .input-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 720px;
+      gap: 0.4rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.8rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background: #111;
+      color: #fff;
+    }
+    button {
+      padding: 0.8rem 1.2rem;
+      border: none;
+      background: linear-gradient(90deg, #FF3CAC, #42FFB9);
+      color: black;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: #00FFB0;
+      color: #000;
+    }
+    .shaniqua-avatar {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 85px;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid #FFD700;
+      box-shadow: 0 0 14px #FF3CAC;
+      z-index: 999;
+    }
+    .market-btns {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .market-btns a {
+      background: #42FFB9;
+      color: #111;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .market-btns a:hover {
+      background: #00FFC6;
+    }
+    .mood-status {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #FF3CAC;
+      font-weight: 600;
+    }
+    canvas {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      box-shadow: 0 0 18px #00ffae;
+      width: 95%;
+      max-width: 720px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>SaltyVerse Diva Mode Activated</h1>
+    <div class="toggles">
+      <div class="toggle">
+        <label for="wakeWord">Wake Word Required</label>
+        <input type="checkbox" id="wakeWord">
+      </div>
+      <div class="toggle">
+        <label for="roastMode">Roast Mode</label>
+        <input type="checkbox" id="roastMode">
+      </div>
+    </div>
+    <div id="locationMessage" class="mood-status">🌐 Detecting location...</div>
+    <div id="chatbox"></div>
+    <div class="input-row">
+      <input type="text" id="userInput" placeholder="Say something...">
+      <button onclick="handleChat()">Send</button>
+    </div>
+    <div class="market-btns">
+      <a href="#">Buy a SaltyBot</a>
+      <a href="#">Customize Your Bot</a>
+    </div>
+    <canvas id="moodChart"></canvas>
+  </div>
+  <img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png" class="shaniqua-avatar" alt="Shaniqua">
+
+  <script>
+    const supa = supabase.createClient('https://ekinqlmecuptglmeuuls.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...');
+
+    async function trackUser(city, region, mood) {
+      await supa.from('login_logs').insert([{ city, region, mood, timestamp: new Date() }]);
+    }
+
+    async function getLocationAndWelcome() {
+      try {
+        const res = await fetch('https://ipinfo.io/json?token=1d47c37ea47ca6');
+        const data = await res.json();
+        const city = data.city;
+        const region = data.region;
+        const mood = "Curious";
+        document.getElementById("locationMessage").textContent = `👁️ Oh hey sugar, how’s life in ${city}, ${region}? Shaniqua’s watchin’. You better act right.`;
+        trackUser(city, region, mood);
+      } catch {
+        document.getElementById("locationMessage").textContent = "❌ Location unavailable. You hiding, boo?";
+      }
+    }
+
+    function handleChat() {
+      const input = document.getElementById("userInput").value;
+      const chatbox = document.getElementById("chatbox");
+      if (!input.trim()) return;
+      const userMsg = `<div class='user'>${input}</div>`;
+      const roast = document.getElementById("roastMode").checked;
+      const response = roast
+        ? `Oh honey, that's cute. You think you know sass? Sit down. You said: '${input}'`
+        : `Mmmhmm... I heard: '${input}'. Let me think on that.`;
+      const botMsg = `<div class='bot'>${response}</div>`;
+      chatbox.innerHTML += userMsg + botMsg;
+      document.getElementById("userInput").value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      getLocationAndWelcome();
+    });
+  </script>
+</body>
+</html>

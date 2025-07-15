@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enter the SaltyVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(circle, #0A0B1F 0%, #01020C 100%);
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .wormhole-bg {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200vw;
+      height: 200vh;
+      background: url('https://media.giphy.com/media/xTiTntpDIXFZ1azKHC/giphy.gif') center center / cover no-repeat;
+      opacity: 0.15;
+      animation: swirl 80s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes swirl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .container {
+      z-index: 2;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 480px;
+      background: rgba(20, 20, 40, 0.95);
+      padding: 2.5rem;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 0 30px #FF3CAC, 0 0 50px #42FFB9;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.3rem;
+      color: #FFD700;
+      text-shadow: 0 0 10px #FF3CAC;
+      margin-bottom: 1rem;
+    }
+
+    input, button {
+      width: 100%;
+      margin: 0.6rem 0;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    input {
+      background: #111;
+      color: #fff;
+    }
+
+    button {
+      background: #FF3CAC;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #42FFB9;
+    }
+
+    #quote {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      font-style: italic;
+      color: #FFD700;
+      animation: flicker 3s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wormhole-bg"></div>
+  <div class="container">
+    <h1>SaltyVerse Mega Login</h1>
+    <form onsubmit="return false;">
+      <input type="text" placeholder="Codename (Nickname)" required />
+      <input type="password" placeholder="Enter Password" required />
+      <button onclick="alert('SaltyVerse initialized!')">Log Me In</button>
+    </form>
+    <div id="quote">"Welcome to the SaltyVerse. Reality? Optional. Sass? Mandatory."</div>
+  </div>
+</body>
+</html>

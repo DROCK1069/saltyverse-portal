@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter the SaltyVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: url('https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/Beach.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .beach-banner {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #ffe7a7;
+      text-shadow: 2px 2px 10px #121212, 0 0 20px #000a;
+      background: rgba(0,0,0,0.43);
+      padding: 12px 28px;
+      border-radius: 18px;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #ff3cac;
+      font-size: 2.4rem;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      text-shadow: 1px 2px 12px #222, 0 0 12px #ff3cac55;
+    }
+    .sass-banner {
+      font-size: 1.15rem;
+      color: #ffe350;
+      font-style: italic;
+      text-shadow: 0 2px 8px #222, 0 0 8px #ffe350cc;
+      margin-bottom: 0.7rem;
+      min-height: 1.6em;
+    }
+    .avatar {
+      width: 210px;
+      border-radius: 50%;
+      border: 5px solid #ff3cac;
+      box-shadow: 0 0 25px #ff3cac, 0 0 55px #ff3cac66;
+      margin: 1.5rem auto 2rem;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 12px #ff3cac; }
+      50% { box-shadow: 0 0 35px #ff3cac, 0 0 70px #ff3cacc2; }
+    }
+    .location-sass {
+      font-size: 1.18rem;
+      color: #00ffc3;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-shadow: 1px 2px 8px #181818, 0 0 12px #00ffc380;
+      margin-bottom: 2.2rem;
+      min-height: 1.6em;
+    }
+    .login-btns {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .login-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.18);
+      box-shadow: 0 0 16px #111a;
+      border: 2px solid #fff4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.18s, background 0.25s;
+      outline: none;
+      position: relative;
+    }
+    .login-btn img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+    .login-btn:hover {
+      background: #fff8;
+      box-shadow: 0 0 24px #ff3cac66,0 0 40px #ffe7a7cc;
+      border-color: #ff3cac;
+    }
+    .login-btn[data-provider='google']:hover { box-shadow: 0 0 18px #34a85399; border-color: #34a853; }
+    .login-btn[data-provider='microsoft']:hover { box-shadow: 0 0 18px #00a4ef99; border-color: #00a4ef; }
+    .login-btn[data-provider='facebook']:hover { box-shadow: 0 0 18px #1877f299; border-color: #1877f2; }
+    .login-btn[data-provider='discord']:hover { box-shadow: 0 0 18px #5865f299; border-color: #5865f2; }
+    .tnt-link {
+      margin-top: 1.5rem;
+      color: #00ffe7;
+      font-weight: 600;
+      text-shadow: 0 0 8px #222, 0 0 16px #00ffe766;
+      text-decoration: none;
+      font-size: 1.13rem;
+      transition: color 0.18s;
+      display: inline-block;
+    }
+    .tnt-link:hover {
+      color: #ff3cac;
+      text-shadow: 0 0 18px #ff3cac, 0 0 24px #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="beach-banner">🏝️ Welcome to the SaltyVerse Portal 🐚</div>
+  <h1>Shaniqua’s Digital Beach Hut Login</h1>
+  <div class="sass-banner" id="sass-quote">"Don't embarrass your hometown."</div>
+  <img class="avatar" src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=w:300" alt="Shaniqua Avatar">
+  <div class="location-sass" id="geo-info">Locating your fabulous self...</div>
+  <div class="login-btns">
+    <div class="login-btn" data-provider="google" onclick="loginWithProvider('google')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/google-logo.png" alt="Google"></div>
+    <div class="login-btn" data-provider="microsoft" onclick="loginWithProvider('microsoft')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/microsoft-logo.png" alt="Microsoft"></div>
+    <div class="login-btn" data-provider="facebook" onclick="loginWithProvider('facebook')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/facebook-logo.png" alt="Facebook"></div>
+    <div class="login-btn" data-provider="discord" onclick="loginWithProvider('discord')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/discord-logo.png" alt="Discord"></div>
+  </div>
+  <a class="tnt-link" href="https://tntcybersolutions.com">← Return to TNTCyberSolutions</a>
+  <script>
+    // Location Sass
+    fetch("https://ipinfo.io/json?token=1d47c37ea47ca6")
+      .then(response => response.json())
+      .then(data => {
+        const city = data.city || "your town";
+        const region = data.region || "your state";
+        const sassLine = `Oh honey... logging in from ${city}, ${region}? Don’t embarrass your hometown.`;
+        document.getElementById("geo-info").textContent = sassLine;
+        const audio = new Audio(`https://saltiq.ai/api/shaniqua/tts?text=${encodeURIComponent(sassLine)}`);
+        setTimeout(() => audio.play(), 1400);
+      })
+      .catch(() => {
+        document.getElementById("geo-info").textContent = "Can’t even find your location… now that’s embarrassing.";
+      });
+    // Rotating Sass Quotes
+    const quotes = [
+      "You again? Try not to break anything this time.",
+      "The sass is strong with this one.",
+      "Loading your digital destiny…",
+      "Why do I feel like you’re about to do something dumb?",
+      "It’s giving… boss energy. Let’s go."
+    ];
+    setInterval(() => {
+      const index = Math.floor(Math.random() * quotes.length);
+      document.getElementById("sass-quote").textContent = quotes[index];
+    }, 5000);
+    // Dummy login function — connect to Supabase auth or your backend!
+    function loginWithProvider(provider) {
+      alert(`Login with ${provider} coming soon! (Wire up OAuth in auth.js)`);
+      // TODO: Implement real auth with Supabase, Firebase, or backend
+    }
+  </script>
+</body>
+</html>

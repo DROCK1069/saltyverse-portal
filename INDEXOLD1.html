@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SaltyVerse – Mega Login Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(ellipse at center, #0A0B1F 0%, #01020C 100%);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .center-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(20, 20, 40, 0.95);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 25px #FF3CAC, 0 0 50px #42FFB9;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+    }
+
+    input, button {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    input {
+      background: #111;
+      color: #fff;
+    }
+
+    button {
+      background: #FF3CAC;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #42FFB9;
+    }
+
+    .quote {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #FFD700;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .shaniqua-img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-box">
+    <h1>SaltyVerse Login</h1>
+    <form onsubmit="return false;">
+      <input id="nickname" type="text" placeholder="Nickname" required />
+      <input id="password" type="password" placeholder="Password" required />
+      <button onclick="initLogin()">Log Me In</button>
+    </form>
+    <div id="location-info" class="quote">🌐 Detecting location...</div>
+    <img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=h:175,m" class="shaniqua-img" alt="Shaniqua Sees You"/>
+  </div>
+  <script>
+    async function initLogin() {
+      const nickname = document.getElementById("nickname").value;
+      const pw = document.getElementById("password").value;
+      if (pw.length < 6) {
+        alert("Shaniqua says: That password is weaker than decaf coffee.");
+        return;
+      }
+
+      try {
+        const res = await fetch('https://ipinfo.io/json?token=1d47c37ea47ca6');
+        const data = await res.json();
+        document.getElementById("location-info").textContent =
+          `👁️ Shaniqua sees you from ${data.city}, ${data.region}`;
+
+        await fetch("https://ekinqlmecuptglmeuuls.supabase.co/rest/v1/login_logs", {
+          method: "POST",
+          headers: {
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+            "Content-Type": "application/json",
+            "Prefer": "return=representation"
+          },
+          body: JSON.stringify({
+            nickname: nickname,
+            ip_address: data.ip,
+            location: `${data.city}, ${data.region}`,
+            user_agent: navigator.userAgent
+          })
+        });
+
+        await fetch("https://netorgft6776777.webhook.office.com/webhookb2/4610bd84-b79d-4e74-8d04-234d40640bce@f159029d-47f5-4513-9de4-200565748f69/IncomingWebhook/7a27471ec31643c0a1c5113960382ce6/4e1b7402-cd59-42c8-bee1-3aee54071984/V2UyrOgaSQqWjou_ixN1fME8qexSoVvy9QTH55PznXi-g1", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text: `🌀 New SaltyVerse login!
+👤 Nickname: ${nickname}
+📍 From: ${data.city}, ${data.region}
+🌐 IP: ${data.ip}`
+          })
+        });
+
+        alert("Welcome to the SaltyVerse.");
+      } catch (e) {
+        document.getElementById("location-info").textContent = "❌ Location unavailable.";
+      }
+    }
+  </script>
+</body>
+</html>
