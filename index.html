@@ -25,8 +25,8 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 3rem;
       color: #ffe7a7;
-      text-shadow: 2px 2px 10px #121212, 0 0 20px #000a;
-      background: rgba(0,0,0,0.43);
+      text-shadow: 2px 2px 12px #000, 0 0 40px #111;
+      background: rgba(0,0,0,0.33);
       padding: 12px 28px;
       border-radius: 18px;
       margin-bottom: 30px;
@@ -37,13 +37,14 @@
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 0.5rem;
       letter-spacing: 1px;
-      text-shadow: 1px 2px 12px #222, 0 0 12px #ff3cac55;
+      text-shadow: 1px 2px 14px #333,0 0 20px #ff3cac77;
     }
     .sass-banner {
       font-size: 1.15rem;
-      color: #ffe350;
+      color: #ff3cac;
       font-style: italic;
-      text-shadow: 0 2px 8px #222, 0 0 8px #ffe350cc;
+      font-weight: bold;
+      text-shadow: 0 0 8px #ff3cac;
       margin-bottom: 0.7rem;
       min-height: 1.6em;
     }
@@ -60,11 +61,11 @@
       50% { box-shadow: 0 0 35px #ff3cac, 0 0 70px #ff3cacc2; }
     }
     .location-sass {
-      font-size: 1.18rem;
-      color: #00ffc3;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      text-shadow: 1px 2px 8px #181818, 0 0 12px #00ffc380;
+      font-size: 1.17rem;
+      color: #ff3cac;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 10px #ff3cac, 0 0 20px #000;
       margin-bottom: 2.2rem;
       min-height: 1.6em;
     }
@@ -79,7 +80,7 @@
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: rgba(0,0,0,0.18);
+      background: rgba(0,0,0,0.15);
       box-shadow: 0 0 16px #111a;
       border: 2px solid #fff4;
       display: flex;
@@ -94,6 +95,7 @@
       width: 32px;
       height: 32px;
       display: block;
+      filter: none;
     }
     .login-btn:hover {
       background: #fff8;
@@ -104,6 +106,59 @@
     .login-btn[data-provider='microsoft']:hover { box-shadow: 0 0 18px #00a4ef99; border-color: #00a4ef; }
     .login-btn[data-provider='facebook']:hover { box-shadow: 0 0 18px #1877f299; border-color: #1877f2; }
     .login-btn[data-provider='discord']:hover { box-shadow: 0 0 18px #5865f299; border-color: #5865f2; }
+    .login-or {
+      font-size: 1rem;
+      color: #ffe7a7;
+      margin: 8px 0 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px #111, 0 0 24px #000;
+    }
+    .user-login {
+      max-width: 310px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: rgba(0,0,0,0.30);
+      border-radius: 17px;
+      box-shadow: 0 0 24px #3339;
+      padding: 22px 24px 18px;
+    }
+    .user-login input[type="email"], .user-login input[type="password"] {
+      font-size: 1.05rem;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #0ef7;
+      margin-bottom: 3px;
+      background: #fff7;
+      color: #222;
+      outline: none;
+      box-shadow: 0 1px 5px #0003;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      transition: border 0.14s;
+    }
+    .user-login input[type="email"]:focus, .user-login input[type="password"]:focus {
+      border-color: #ff3cac;
+    }
+    .user-login button {
+      background: linear-gradient(90deg,#ff3cac,#ffe700);
+      border: none;
+      border-radius: 8px;
+      padding: 11px 0;
+      color: #111;
+      font-size: 1.11rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ff3cac55;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .user-login button:hover {
+      background: linear-gradient(90deg,#ffe700,#ff3cac);
+      color: #ff3cac;
+    }
     .tnt-link {
       margin-top: 1.5rem;
       color: #00ffe7;
@@ -118,6 +173,20 @@
       color: #ff3cac;
       text-shadow: 0 0 18px #ff3cac, 0 0 24px #222;
     }
+    .login-success {
+      color: #42ffb9;
+      font-weight: bold;
+      margin: 0.5em 0 0.3em;
+      font-size: 1.14rem;
+      text-shadow: 0 0 18px #000;
+    }
+    .login-fail {
+      color: #ff3c00;
+      font-weight: bold;
+      margin: 0.5em 0 0.3em;
+      font-size: 1.1rem;
+      text-shadow: 0 0 10px #111;
+    }
   </style>
 </head>
 <body>
@@ -126,11 +195,19 @@
   <div class="sass-banner" id="sass-quote">"Don't embarrass your hometown."</div>
   <img class="avatar" src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=w:300" alt="Shaniqua Avatar">
   <div class="location-sass" id="geo-info">Locating your fabulous self...</div>
+  <form class="user-login" id="user-login">
+    <input type="email" id="email" placeholder="Email address" autocomplete="username" required />
+    <input type="password" id="password" placeholder="Password" autocomplete="current-password" required />
+    <button type="submit">Log In</button>
+    <div class="login-success" id="login-success" style="display:none">Login successful! Redirecting…</div>
+    <div class="login-fail" id="login-fail" style="display:none">Incorrect email or password. Try again!</div>
+  </form>
+  <div class="login-or">— OR —</div>
   <div class="login-btns">
-    <div class="login-btn" data-provider="google" onclick="loginWithProvider('google')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/google-logo.png" alt="Google"></div>
-    <div class="login-btn" data-provider="microsoft" onclick="loginWithProvider('microsoft')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/microsoft-logo.png" alt="Microsoft"></div>
-    <div class="login-btn" data-provider="facebook" onclick="loginWithProvider('facebook')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/facebook-logo.png" alt="Facebook"></div>
-    <div class="login-btn" data-provider="discord" onclick="loginWithProvider('discord')"><img src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/discord-logo.png" alt="Discord"></div>
+    <div class="login-btn" data-provider="google" onclick="loginWithProvider('google')"><img src="https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/google-logo.png" alt="Google"></div>
+    <div class="login-btn" data-provider="microsoft" onclick="loginWithProvider('microsoft')"><img src="https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/microsoft-logo.png" alt="Microsoft"></div>
+    <div class="login-btn" data-provider="facebook" onclick="loginWithProvider('facebook')"><img src="https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/facebook-logo.png" alt="Facebook"></div>
+    <div class="login-btn" data-provider="discord" onclick="loginWithProvider('discord')"><img src="https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/discord-logo.png" alt="Discord"></div>
   </div>
   <a class="tnt-link" href="https://tntcybersolutions.com">← Return to TNTCyberSolutions</a>
   <script>
@@ -163,8 +240,22 @@
     // Dummy login function — connect to Supabase auth or your backend!
     function loginWithProvider(provider) {
       alert(`Login with ${provider} coming soon! (Wire up OAuth in auth.js)`);
-      // TODO: Implement real auth with Supabase, Firebase, or backend
     }
+    // Simple test login for saltybot@getasaltybot.com / BuyaBot
+    document.getElementById('user-login').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+      const okEmail = 'saltybot@getasaltybot.com', okPwd = 'BuyaBot';
+      if (email === okEmail && password === okPwd) {
+        document.getElementById('login-success').style.display = 'block';
+        document.getElementById('login-fail').style.display = 'none';
+        setTimeout(() => window.location.href = 'dashboard.html', 1400);
+      } else {
+        document.getElementById('login-success').style.display = 'none';
+        document.getElementById('login-fail').style.display = 'block';
+      }
+    });
   </script>
 </body>
 </html>
