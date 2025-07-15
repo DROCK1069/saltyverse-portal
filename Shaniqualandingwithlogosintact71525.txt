@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter the SaltyVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: url('https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/Beach.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .login-container {
+      background: rgba(24,18,40,0.88);
+      border-radius: 22px;
+      padding: 36px 32px 30px;
+      max-width: 375px;
+      margin: 60px auto 24px;
+      box-shadow: 0 0 40px #0e142480, 0 4px 30px #000a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .beach-banner {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #ff3cac;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px #ff3cac, 0 0 60px #fff5, 1px 2px 22px #3ac;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+    .sass-message, .location-sass {
+      color: #ff3cac;
+      text-shadow: 0 0 8px #ff3cac, 0 0 24px #222;
+      font-size: 1.15rem;
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+    .avatar {
+      width: 145px;
+      border-radius: 50%;
+      border: 4px solid #ff3cac;
+      margin: 18px 0 22px 0;
+      box-shadow: 0 0 28px #ff3cacbb;
+    }
+    .user-login {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .user-login input[type="email"], .user-login input[type="password"] {
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1.5px solid #ff3cacbb;
+      background: #fff9;
+      color: #1c2331;
+      font-family: 'Montserrat', sans-serif;
+      padding: 10px 12px;
+      font-weight: 600;
+      transition: border 0.15s;
+    }
+    .user-login input:focus {
+      border-color: #ff3cac;
+      outline: none;
+    }
+    .user-login button {
+      background: linear-gradient(90deg,#ff3cac,#ffe700);
+      border: none;
+      border-radius: 8px;
+      padding: 11px 0;
+      color: #111;
+      font-size: 1.13rem;
+      font-weight: bold;
+      box-shadow: 0 0 8px #ff3cac66;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .user-login button:hover {
+      background: linear-gradient(90deg,#ffe700,#ff3cac);
+      color: #ff3cac;
+    }
+    .login-or {
+      color: #ffe7a7;
+      font-size: 1rem;
+      margin: 12px 0 6px;
+      font-weight: 700;
+    }
+    .login-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .login-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 8px #0007;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid #ff3cac33;
+      transition: box-shadow 0.18s, border 0.18s;
+    }
+    .login-btn img {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+    .login-btn:hover {
+      border-color: #ff3cac;
+      box-shadow: 0 0 20px #ff3cac;
+    }
+    .tnt-link {
+      margin-top: 15px;
+      color: #00ffe7;
+      font-weight: 600;
+      text-shadow: 0 0 8px #222, 0 0 14px #00ffe766;
+      text-decoration: none;
+      font-size: 1.09rem;
+      transition: color 0.18s;
+      display: inline-block;
+    }
+    .tnt-link:hover {
+      color: #ff3cac;
+      text-shadow: 0 0 16px #ff3cac, 0 0 22px #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="beach-banner">🏝️ Enter the SaltyVerse 🐚</div>
+    <div class="sass-message" id="sass-quote">Loading your digital destiny…</div>
+    <img class="avatar" src="https://img1.wsimg.com/isteam/ip/aec3b6e1-5b89-48ed-9233-4199ef9cca45/Shaniquaseesyou.png/:/rs=w:300" alt="Shaniqua Avatar">
+    <div class="location-sass" id="geo-info">Locating your fabulous self…</div>
+    <form class="user-login" id="user-login">
+      <input type="email" id="email" placeholder="Email address" autocomplete="username" required />
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" required />
+      <button type="submit">Log In</button>
+    </form>
+    <div class="login-or">OR</div>
+    <div class="login-btns">
+      <div class="login-btn" onclick="loginWithProvider('google')">
+        <img src="https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/google%20auth%20logo.png" alt="Google Login">
+      </div>
+      <div class="login-btn" onclick="loginWithProvider('discord')">
+        <img src="https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/discordlogoimage.jpg" alt="Discord Login">
+      </div>
+      <div class="login-btn" onclick="loginWithProvider('facebook')">
+        <img src="https://raw.githubusercontent.com/DROCK1069/saltyverse-portal/main/facebook%20login%20image%20logo.png" alt="Facebook Login">
+      </div>
+    </div>
+    <a class="tnt-link" href="https://tntcybersolutions.com">← Return to TNTCyberSolutions</a>
+  </div>
+  <script>
+    // Location Sass
+    fetch("https://ipinfo.io/json?token=1d47c37ea47ca6")
+      .then(response => response.json())
+      .then(data => {
+        const city = data.city || "your town";
+        const region = data.region || "your state";
+        const sassLine = `Oh honey... logging in from ${city}, ${region}? Don’t embarrass your hometown.`;
+        document.getElementById("geo-info").textContent = sassLine;
+      })
+      .catch(() => {
+        document.getElementById("geo-info").textContent = "Can’t even find your location… now that’s embarrassing.";
+      });
+
+    // Rotating Sass Quotes
+    const quotes = [
+      "You again? Try not to break anything this time.",
+      "The sass is strong with this one.",
+      "Loading your digital destiny…",
+      "Why do I feel like you’re about to do something dumb?",
+      "It’s giving… boss energy. Let’s go.",
+      "If you mess up, just blame it on lag.",
+      "Sassy login powered by Shaniqua.",
+      "You scroll, I slay.",
+      "Don’t spill your drink on the dashboard.",
+      "Serving neon realness since 2025."
+    ];
+    setInterval(() => {
+      const index = Math.floor(Math.random() * quotes.length);
+      document.getElementById("sass-quote").textContent = quotes[index];
+    }, 4200);
+
+    // Dummy login (replace with real backend logic!)
+    function loginWithProvider(provider) {
+      alert(`Login with ${provider} coming soon!`);
+    }
+  </script>
+</body>
+</html>
